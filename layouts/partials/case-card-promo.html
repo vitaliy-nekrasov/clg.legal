@@ -1,0 +1,23 @@
+<article class="case-card case-card--promo">
+  <p class="case-card__label">{{ .label }}</p>
+
+  <h3 class="case-card__title">
+    {{ range .titleLines }}
+      <span class="case-card__title-line">{{ . }}</span>
+    {{ end }}
+  </h3>
+
+  <div class="case-card__footer">
+    <a class="case-card__button btn btn--light" href="{{ .buttonUrl | relLangURL }}">
+      {{ .buttonText }}
+    </a>
+    <img
+      class="case-card__shield"
+      src="{{ .shieldImage }}"
+      width="220"
+      height="180"
+      alt=""
+      decoding="async"
+    />
+  </div>
+</article>
