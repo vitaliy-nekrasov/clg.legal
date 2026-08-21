@@ -1,0 +1,18 @@
+<article class="practice-card">
+  <div class="practice-card__layer practice-card__layer--back" aria-hidden="true"></div>
+  <div class="practice-card__layer practice-card__layer--middle" aria-hidden="true"></div>
+
+  <div class="practice-card__main">
+    <div class="practice-card__decor" aria-hidden="true"></div>
+
+    <h3 class="practice-card__title">{{ .title }}</h3>
+
+    <p class="practice-card__text">
+      {{ with .lead }}<strong>{{ . }}</strong> {{ end }}{{ .text }}
+    </p>
+
+    <a class="practice-card__link" href="{{ .url | relLangURL }}">
+      Детальніше <span aria-hidden="true">↗</span>
+    </a>
+  </div>
+</article>

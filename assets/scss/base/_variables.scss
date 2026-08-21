@@ -29,11 +29,12 @@ $transition-base: 0.25s ease;
 @mixin container {
   width: 100%;
   max-width: $container-max-width;
-  margin-inline: auto;
+  margin-inline: 16px auto;
   padding-inline: 20px;
 
   @include respond-up($breakpoint-md) {
     padding-inline: 24px;
+    margin-inline: auto;
   }
 
   @include respond-up($breakpoint-lg) {

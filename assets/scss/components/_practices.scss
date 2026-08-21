@@ -1,0 +1,260 @@
+@import "../base/variables";
+
+$color-service-card: #0d2924;
+$color-service-layer-back: #edecf1;
+$color-service-layer-middle: #c7c7c7;
+$color-service-link-hover: #3a7f70;
+
+.practices {
+  background-color: $color-black-lite;
+  color: $color-white;
+  padding-top: 1px;
+  padding-bottom: 40px;
+
+  @include respond-up($breakpoint-lg) {
+    padding-top: 40px;
+  }
+}
+
+.practices__container {
+  @include container;
+}
+
+.practices__title {
+  display: block;
+  margin: 0 0 20px;
+  font-size: 24px;
+  font-weight: 300;
+  line-height: 1.3;
+
+  @include respond-up($breakpoint-lg) {
+    display: none;
+  }
+}
+
+.practices__carousel {
+  @include respond-up($breakpoint-lg) {
+    display: none;
+  }
+}
+
+.practices__carousel-body {
+  position: relative;
+  padding-inline: 44px;
+
+  @include respond-up($breakpoint-md) {
+    padding-inline: 48px;
+  }
+}
+
+.practices__track {
+  display: flex;
+  gap: 10px;
+  margin: 0;
+  padding: 24px 0 12px;
+  list-style: none;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.practices__slide {
+  flex: 0 0 100%;
+  min-width: 0;
+  scroll-snap-align: start;
+
+  @include respond-up($breakpoint-md) {
+    flex: 0 0 49%;
+  }
+}
+
+.practices__nav {
+  position: absolute;
+  top: calc(29px + 128px);
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  color: $color-white;
+  cursor: pointer;
+  transition: background-color $transition-base;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
+
+  &--prev {
+    left: 0;
+  }
+
+  &--next {
+    right: 0;
+  }
+}
+
+.practices__grid {
+  display: none;
+
+  @include respond-up($breakpoint-lg) {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 32px 16px;
+    padding-top: 29px;
+  }
+
+  @include respond-up($breakpoint-xl) {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 32px 12px;
+  }
+}
+
+.practice-card {
+  position: relative;
+  width: 100%;
+  min-width: 0;
+  height: 100%;
+  padding-top: 6px;
+}
+
+.practice-card__layer {
+  position: absolute;
+  top: 0;
+  width: 63%;
+  max-width: 208px;
+  height: 100px;
+  border-radius: 15px 15px 15px 0;
+  pointer-events: none;
+
+  &--back {
+    left: 0;
+    background: $color-service-layer-back;
+    transform: translateY(-16px);
+  }
+
+  &--middle {
+    left: 15px;
+    background: $color-service-layer-middle;
+    transform: translateY(-10px);
+  }
+}
+
+.practice-card__main {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 257px;
+  height: 100%;
+  padding: 16px;
+  border-radius: 24px;
+  overflow: hidden;
+  background: $color-service-card;
+
+  @include respond-up($breakpoint-lg) {
+    padding: 24px;
+  }
+}
+
+.practice-card__decor {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50%;
+  max-width: 206px;
+  height: 195px;
+  background-image: url(/images/hero-person.png);
+  background-repeat: no-repeat;
+  background-position: top right;
+  background-size: contain;
+  pointer-events: none;
+}
+
+.practice-card__title {
+  position: relative;
+  z-index: 1;
+  margin: 0 0 14px;
+  padding-right: 8px;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.25;
+  text-transform: uppercase;
+
+  @include respond-up($breakpoint-md) {
+    font-size: 17px;
+  }
+
+  @include respond-up($breakpoint-xl) {
+    font-size: 18px;
+    line-height: 1.2;
+  }
+}
+
+.practice-card__text {
+  position: relative;
+  z-index: 1;
+  flex: 1 1 auto;
+  margin: 0 0 22px;
+  padding-right: 8px;
+  font-size: 15px;
+  line-height: 1.35;
+
+  @include respond-up($breakpoint-md) {
+    font-size: 16px;
+  }
+
+  @include respond-up($breakpoint-xl) {
+    font-size: 18px;
+    line-height: 1.2;
+  }
+
+  strong {
+    font-weight: 700;
+  }
+}
+
+.practice-card__link {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: auto;
+  margin-left: auto;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.2;
+  text-decoration: none;
+  transition: color $transition-base;
+
+  @include respond-up($breakpoint-xl) {
+    font-size: 18px;
+  }
+
+  span {
+    font-size: 24px;
+    line-height: 1;
+  }
+
+  &:hover {
+    color: $color-service-link-hover;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .practices__track {
+    scroll-behavior: auto;
+  }
+}

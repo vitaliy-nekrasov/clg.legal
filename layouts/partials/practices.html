@@ -1,0 +1,46 @@
+{{ $practices := .Params.practices }}
+<section class="practices" id="praktyky" aria-labelledby="practices-title">
+  <div class="practices__container">
+    <h2 class="practices__title" id="practices-title">{{ $practices.title }}</h2>
+
+    <div class="practices__carousel" data-practices-carousel>
+      <div class="practices__carousel-body">
+        <button
+          class="practices__nav practices__nav--prev"
+          type="button"
+          aria-label="Попередня послуга"
+          data-practices-prev
+        >
+          <svg width="16" height="16" viewBox="0 0 1000 1000" aria-hidden="true">
+            <path d="M646 125C629 125 613 133 604 142L308 442C296 454 292 471 292 487 292 504 296 521 308 533L604 854C617 867 629 875 646 875 663 875 679 871 692 858 704 846 713 829 713 812 713 796 708 779 692 767L438 487 692 225C700 217 708 204 708 187 708 171 704 154 692 142 675 129 663 125 646 125Z" fill="currentColor"/>
+          </svg>
+        </button>
+
+        <ul class="practices__track" data-practices-track>
+          {{ range $practices.items }}
+            <li class="practices__slide">
+              {{ partial "practice-card.html" . }}
+            </li>
+          {{ end }}
+        </ul>
+
+        <button
+          class="practices__nav practices__nav--next"
+          type="button"
+          aria-label="Наступна послуга"
+          data-practices-next
+        >
+          <svg width="16" height="16" viewBox="0 0 1000 1000" aria-hidden="true">
+            <path d="M696 533C708 521 713 504 713 487 713 471 708 454 696 446L400 146C388 133 375 125 354 125 338 125 325 129 313 142 300 154 292 171 292 187 292 204 296 221 308 233L563 492 304 771C292 783 288 800 288 817 288 833 296 850 308 863 321 871 338 875 354 875 371 875 388 867 400 854L696 533Z" fill="currentColor"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="practices__grid">
+      {{ range $practices.items }}
+        {{ partial "practice-card.html" . }}
+      {{ end }}
+    </div>
+  </div>
+</section>
