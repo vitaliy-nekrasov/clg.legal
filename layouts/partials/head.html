@@ -1,0 +1,35 @@
+{{ $seo := .Params.seo | default dict }}
+{{ $title := $seo.title | default .Title }}
+{{ $description := $seo.description | default .Description | default .Site.Params.description }}
+{{ $canonical := $seo.canonical | default .Permalink }}
+{{ $ogImage := $seo.ogImage | default "/images/hero-person.png" | absURL }}
+{{ $robots := $seo.robots | default "index, follow" }}
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>{{ $title }}</title>
+<meta name="description" content="{{ $description }}">
+<meta name="robots" content="{{ $robots }}">
+<link rel="canonical" href="{{ $canonical | absURL }}">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="{{ $title }}">
+<meta property="og:description" content="{{ $description }}">
+<meta property="og:url" content="{{ $canonical | absURL }}">
+<meta property="og:image" content="{{ $ogImage }}">
+<meta property="og:locale" content="uk_UA">
+<meta property="og:site_name" content="{{ .Site.Title }}">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ $title }}">
+<meta name="twitter:description" content="{{ $description }}">
+<meta name="twitter:image" content="{{ $ogImage }}">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="icon" href="/images/favicon-32.png" sizes="32x32">
+<link rel="icon" href="/images/favicon-192.png" sizes="192x192">
+
+{{ partial "styles.html" . }}

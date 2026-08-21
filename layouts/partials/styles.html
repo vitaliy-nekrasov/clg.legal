@@ -1,0 +1,16 @@
+{{ $styles := .Params.styles | default (slice "pages/home") }}
+{{ range $style := $styles }}
+  {{ $path := printf "scss/%s.scss" $style }}
+  {{ with resources.Get $path }}
+    {{ $sassOpts := dict "includePaths" (slice "assets/scss") "targetPath" (printf "css/%s.css" $style) "outputStyle" "compressed" }}
+    {{ $css := . | css.Sass $sassOpts | minify }}
+    {{ if hugo.IsProduction }}
+      {{ $css = $css | fingerprint }}
+      <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}" crossorigin="anonymous">
+    {{ else }}
+      <link rel="stylesheet" href="{{ $css.RelPermalink }}?v={{ md5 $css.Content }}">
+    {{ end }}
+  {{ else }}
+    {{ warnf "SCSS file not found: %s" $path }}
+  {{ end }}
+{{ end }}

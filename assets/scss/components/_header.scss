@@ -1,0 +1,443 @@
+@import "../base/variables";
+
+$drawer-width: 360px;
+$drawer-transition: 0.35s ease;
+
+.site-header {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 100;
+  width: 100%;
+  color: $color-white;
+
+  @include respond-up($breakpoint-lg) {
+    background: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+
+  &.is-open {
+    .site-header__toggle-line:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+
+    .site-header__toggle-line:nth-child(2) {
+      opacity: 0;
+    }
+
+    .site-header__toggle-line:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+    .site-header__overlay {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
+
+    .site-header__drawer {
+      transform: translateX(0);
+    }
+  }
+}
+
+.site-header__bar {
+  position: relative;
+  z-index: 3;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 16px;
+  padding: 10px 20px;
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  @include respond-up($breakpoint-md) {
+    padding: 12px 24px;
+  }
+
+  @include respond-up($breakpoint-lg) {
+    grid-template-columns: 130px 1fr;
+    gap: 20px;
+    padding: 10px 32px;
+    background: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+
+  @include respond-up($breakpoint-xl) {
+    grid-template-columns: 200px 1fr;
+    padding: 10px 40px;
+  }
+}
+
+.site-header__logo {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+
+  img {
+    width: auto;
+    height: 72px;
+    object-fit: contain;
+
+    @include respond-up($breakpoint-md) {
+      height: 80px;
+    }
+
+    @include respond-up($breakpoint-lg) {
+      height: 76px;
+    }
+
+    @include respond-up($breakpoint-xl) {
+      height: 80px;
+    }
+  }
+}
+
+.site-header__toggle {
+  position: relative;
+  z-index: 4;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 0;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  color: $color-white;
+  cursor: pointer;
+
+  @include respond-up($breakpoint-lg) {
+    display: none;
+  }
+}
+
+.site-header__toggle-line {
+  display: block;
+  width: 18px;
+  height: 2px;
+  border-radius: 999px;
+  background: currentColor;
+  transition:
+    transform $transition-base,
+    opacity $transition-base;
+}
+
+.site-header__overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  background: rgba(0, 0, 0, 0.55);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition:
+    opacity $drawer-transition,
+    visibility $drawer-transition;
+
+  &[hidden] {
+    display: block !important;
+  }
+
+  @include respond-up($breakpoint-lg) {
+    display: none !important;
+  }
+}
+
+.site-header__drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 20;
+  width: 100%;
+  max-width: $drawer-width;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: rgba(8, 8, 8, 0.96);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: -12px 0 40px rgba(0, 0, 0, 0.35);
+  transform: translateX(100%);
+  transition: transform $drawer-transition;
+  will-change: transform;
+
+  &[hidden] {
+    display: flex !important;
+  }
+
+  @include respond-up($breakpoint-lg) {
+    position: static;
+    top: auto;
+    right: auto;
+    bottom: auto;
+    z-index: auto;
+    width: 100%;
+    max-width: none;
+    display: flex !important;
+    flex-direction: column;
+    overflow: visible;
+    background: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    box-shadow: none;
+    transform: none !important;
+    transition: none;
+    will-change: auto;
+    pointer-events: auto;
+  }
+}
+
+@include respond-up($breakpoint-lg) {
+  .site-header.is-open .site-header__drawer {
+    transform: none !important;
+  }
+}
+
+.site-header__drawer-head {
+  display: flex;
+  justify-content: flex-end;
+  padding: 16px 20px 0;
+
+  @include respond-up($breakpoint-lg) {
+    display: none;
+  }
+}
+
+.site-header__close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 0;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  color: $color-white;
+  cursor: pointer;
+  transition: background-color $transition-base;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.14);
+  }
+}
+
+.site-header__drawer-body {
+  flex: 1 1 auto;
+  overflow-y: auto;
+  padding: 12px 24px 32px;
+
+  @include respond-up($breakpoint-md) {
+    padding: 12px 32px 40px;
+  }
+
+  @include respond-up($breakpoint-lg) {
+    overflow: visible;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+}
+
+.logo-menu {
+  margin: 0 auto;
+
+  @include respond-up($breakpoint-lg) {
+    display: none;
+  }
+}
+
+.site-header__meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 22px;
+
+  @include respond-up($breakpoint-md) {
+    gap: 24px;
+  }
+
+  @include respond-up($breakpoint-lg) {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 16px 20px;
+  }
+
+  @include respond-up($breakpoint-xl) {
+    gap: 24px;
+  }
+}
+
+.site-header__address,
+.site-header__phone {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.3;
+  text-decoration: none;
+  transition: opacity $transition-base;
+
+  &:hover {
+    opacity: 0.85;
+  }
+
+  @include respond-up($breakpoint-lg) {
+    font-size: 12px;
+  }
+
+  @include respond-up($breakpoint-xl) {
+    font-size: 13px;
+  }
+}
+
+.site-header__phones {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.site-header__phone--secondary {
+  font-weight: 600;
+  opacity: 0.9;
+}
+
+.site-header__cta {
+  font-size: 16px;
+  padding: 10px 20px;
+
+  @include respond-up($breakpoint-lg) {
+    font-size: 12px;
+    padding: 8px 14px;
+  }
+
+  @include respond-up($breakpoint-xl) {
+    font-size: 13px;
+    padding: 8px 18px;
+  }
+}
+
+.site-header__divider {
+  border: 0;
+  width: 100%;
+  height: 1px;
+  margin: 20px 0;
+  background: rgba(255, 255, 255, 0.2);
+
+  @include respond-up($breakpoint-lg) {
+    width: auto;
+    margin: 10px 0;
+  }
+
+  @include respond-up($breakpoint-xl) {
+    margin: 12px 0;
+  }
+}
+
+.site-header__nav-list {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+
+  @include respond-up($breakpoint-md) {
+    gap: 14px;
+  }
+
+  @include respond-up($breakpoint-lg) {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px 32px;
+  }
+
+  @include respond-up($breakpoint-xl) {
+    gap: 32px 60px;
+  }
+}
+
+.site-header__nav-link {
+  font-size: 18px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: opacity $transition-base;
+
+  &:hover,
+  &.is-active {
+    opacity: 0.85;
+  }
+
+  @include respond-up($breakpoint-lg) {
+    font-size: 13px;
+  }
+
+  @include respond-up($breakpoint-xl) {
+    font-size: 14px;
+  }
+}
+
+body.is-nav-open {
+  overflow: hidden;
+
+  @include respond-up($breakpoint-lg) {
+    overflow: auto;
+  }
+}
+
+@include respond-up($breakpoint-lg) {
+  .site-header {
+    display: grid;
+    grid-template-columns: 130px 1fr;
+    align-items: start;
+    gap: 20px;
+    padding: 10px 32px;
+  }
+
+  .site-header__bar {
+    display: contents;
+  }
+
+  .site-header__logo {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .site-header__toggle {
+    display: none;
+  }
+
+  .site-header__overlay {
+    display: none !important;
+  }
+
+  .site-header__drawer {
+    grid-column: 2;
+    grid-row: 1;
+    min-width: 0;
+  }
+}
+
+@include respond-up($breakpoint-xl) {
+  .site-header {
+    grid-template-columns: 200px 1fr;
+    padding: 10px 40px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-header__drawer,
+  .site-header__overlay,
+  .site-header__toggle-line {
+    transition: none;
+  }
+}

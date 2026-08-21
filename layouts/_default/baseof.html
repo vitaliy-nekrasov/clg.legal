@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}">
+<head>
+  {{ partial "head.html" . }}
+  {{ block "head-extra" . }}{{ end }}
+</head>
+<body{{ with .Params.bodyClass }} class="{{ . }}"{{ end }}>
+  <a class="skip-link" href="#main">Перейти до вмісту</a>
+
+  {{ block "header" . }}
+    {{ partial "site-header.html" . }}
+  {{ end }}
+
+  <main id="main" class="site-main">
+    {{ block "main" . }}{{ end }}
+  </main>
+
+  {{ block "footer" . }}{{ end }}
+
+  {{ partial "scripts.html" . }}
+  {{ block "scripts-extra" . }}{{ end }}
+</body>
+</html>

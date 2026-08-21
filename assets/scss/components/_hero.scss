@@ -1,0 +1,307 @@
+@import "../base/variables";
+
+.hero {
+  position: relative;
+  display: flex;
+  align-items: stretch;
+  min-height: 612px;
+  color: $color-white;
+  overflow: hidden;
+
+  @include respond-up($breakpoint-md) {
+    min-height: 640px;
+  }
+
+  @include respond-up($breakpoint-lg) {
+    min-height: 940px;
+    background-color: $color-primary;
+  }
+}
+
+.hero__background {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.hero__background-media {
+  width: 100%;
+  height: 100%;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &--mobile {
+    display: block;
+
+    @include respond-up($breakpoint-lg) {
+      display: none;
+    }
+  }
+}
+
+.hero__background-desktop {
+  display: none;
+
+  @include respond-up($breakpoint-lg) {
+    display: grid;
+    grid-template-columns: 38% 1fr;
+    width: 100%;
+    height: 100%;
+  }
+
+  @include respond-up(1220) {
+    grid-template-columns: 48% 1fr;
+  }
+
+  @include respond-up($breakpoint-xl) {
+    grid-template-columns: minmax(288px, 40%) 1fr;
+  }
+}
+
+.hero__background-person {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.hero__background-pattern {
+  height: 100%;
+  background-image: url("/images/hero-bg-desktop.png");
+  background-position: center right;
+  background-repeat: no-repeat;
+}
+
+.hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  pointer-events: none;
+
+  @include respond-up($breakpoint-lg) {
+    background: linear-gradient(
+      90deg,
+      rgba(22, 50, 44, 0.2) 0%,
+      rgba(22, 50, 44, 0.35) 42%,
+      rgba(0, 0, 0, 0.25) 100%
+    );
+  }
+}
+
+.hero__container {
+  position: relative;
+  z-index: 1;
+  @include container;
+  display: flex;
+  width: 100%;
+  padding-block: 24px 24px;
+
+  @include respond-up($breakpoint-md) {
+    padding-block: 70px 36px;
+  }
+
+  @include respond-up($breakpoint-lg) {
+    align-items: flex-start;
+    justify-content: center;
+    margin: auto 0;
+    width: 50%;
+    max-width: none;
+    padding-block: 0;
+    padding-inline: 32px;
+  }
+
+  @include respond-up($breakpoint-xl) {
+    // margin-left: 33%;
+    // width: 67%;
+    // max-width: 736px;
+    // padding-block: 300px 64px;
+    // padding-inline: 40px;
+  }
+}
+
+.hero__content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  max-width: 640px;
+
+  @include respond-up($breakpoint-md) {
+    gap: 20px;
+  }
+
+  @include respond-up($breakpoint-lg) {
+    max-width: 544px;
+  }
+
+  @include respond-up($breakpoint-xl) {
+    max-width: 640px;
+  }
+}
+
+.hero__badge {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.hero__badge-icon {
+  flex-shrink: 0;
+  width: 23px;
+}
+
+.hero__badge-text {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.4;
+
+  @include respond-up($breakpoint-md) {
+    font-size: 16px;
+  }
+
+  @include respond-up($breakpoint-xl) {
+    font-size: 15px;
+  }
+}
+
+.hero__title {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.15;
+  margin-top: auto;
+
+  @include respond-up($breakpoint-md) {
+    font-size: 32px;
+  }
+
+  @include respond-up($breakpoint-lg) {
+    font-size: 36px;
+  }
+
+  @include respond-up($breakpoint-xl) {
+    font-size: 48px;
+  }
+}
+
+.hero__description {
+  max-width: 576px;
+  font-size: 15px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.92);
+
+  @include respond-up($breakpoint-md) {
+    font-size: 16px;
+  }
+
+  @include respond-up($breakpoint-xl) {
+    font-size: 17px;
+  }
+}
+
+.hero__consultation {
+  display: none;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 32px;
+
+  @include respond-up($breakpoint-lg) {
+    display: flex;
+    margin-top: 40px;
+  }
+
+  @include respond-up($breakpoint-xl) {
+    margin-top: 72px;
+  }
+}
+
+.hero__consultation-title {
+  padding-left: 0;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.2;
+
+  @include respond-up($breakpoint-lg) {
+    font-size: 24px;
+  }
+
+  @include respond-up($breakpoint-xl) {
+    font-size: 29px;
+  }
+}
+
+.hero__consultation-text {
+  padding-left: 0;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.hero__form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+
+  @include respond-up($breakpoint-md) {
+    flex-direction: row;
+    align-items: stretch;
+    max-width: 576px;
+  }
+
+  @include respond-up($breakpoint-lg) {
+    max-width: 100%;
+    margin-top: 12px;
+  }
+
+  @include respond-up($breakpoint-xl) {
+    max-width: 576px;
+  }
+}
+
+.hero__input {
+  flex: 1 1 auto;
+  min-height: 48px;
+  padding: 0 18px;
+  border: 0;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  color: $color-white;
+
+  @include respond-up($breakpoint-md) {
+    min-height: 56px;
+  }
+
+  &::placeholder {
+    color: $color-muted;
+  }
+
+  &:focus {
+    outline: 2px solid rgba(255, 255, 255, 0.35);
+    outline-offset: 2px;
+  }
+}
+
+.hero__submit {
+  flex: 0 0 auto;
+  width: 100%;
+  min-height: 48px;
+  padding: 0 20px;
+  font-size: 16px;
+
+  @include respond-up($breakpoint-md) {
+    width: auto;
+    min-height: 56px;
+    font-size: 17px;
+  }
+
+  @include respond-up($breakpoint-xl) {
+    font-size: 18px;
+  }
+}

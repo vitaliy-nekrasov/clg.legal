@@ -1,0 +1,76 @@
+{{ $hero := .Params.hero }}
+<section class="hero" aria-labelledby="hero-title">
+  <div class="hero__background" aria-hidden="true">
+    <picture class="hero__background-media hero__background-media--mobile">
+      <img
+        src="/images/hero-bg-mobile-2.png"
+        alt=""
+        width="1920"
+        height="1080"
+        decoding="async"
+      />
+    </picture>
+    <div class="hero__background-desktop">
+      <img
+        class="hero__background-person"
+        src="/images/hero-person.png"
+        alt=""
+        width="903"
+        height="1024"
+        decoding="async"
+      />
+      <div class="hero__background-pattern"></div>
+    </div>
+    <div class="hero__overlay"></div>
+  </div>
+
+  <div class="hero__container">
+    <div class="hero__content">
+      <div class="hero__badge">
+        <img
+          class="hero__badge-icon"
+          src="/images/badge-icon.png"
+          width="29"
+          height="25"
+          alt=""
+          decoding="async"
+        />
+        <p class="hero__badge-text">{{ $hero.badge }}</p>
+      </div>
+
+      <h1 class="hero__title" id="hero-title">{{ $hero.title }}</h1>
+
+      <p class="hero__description">
+        <strong>{{ $hero.brand }}</strong> {{ $hero.lead }}
+      </p>
+
+      <div class="hero__consultation" id="consultation">
+        <h2 class="hero__consultation-title">{{ $hero.consultationTitle }}</h2>
+        <p class="hero__consultation-text">{{ $hero.consultationText }}</p>
+      </div>
+
+      <form
+        class="hero__form"
+        action="#"
+        method="post"
+        data-hero-form
+        novalidate
+      >
+        <label class="visually-hidden" for="hero-phone">Номер телефону</label>
+        <input
+          class="hero__input"
+          id="hero-phone"
+          type="tel"
+          name="phone"
+          inputmode="tel"
+          autocomplete="tel"
+          placeholder="{{ $hero.formPlaceholder }}"
+          required
+        />
+        <button class="hero__submit btn btn--light" type="submit">
+          {{ $hero.formSubmit }}
+        </button>
+      </form>
+    </div>
+  </div>
+</section>

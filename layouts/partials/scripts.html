@@ -1,0 +1,25 @@
+{{ with resources.Get "js/site.js" }}
+  {{ $js := . | js.Build (dict "minify" true) }}
+  {{ if hugo.IsProduction }}
+    {{ $js = $js | fingerprint }}
+    <script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" crossorigin="anonymous" defer></script>
+  {{ else }}
+    <script src="{{ $js.RelPermalink }}?v={{ md5 $js.Content }}" defer></script>
+  {{ end }}
+{{ end }}
+
+{{ $scripts := .Params.scripts | default (slice) }}
+{{ range $script := $scripts }}
+  {{ $path := printf "js/%s.js" $script }}
+  {{ with resources.Get $path }}
+    {{ $js := . | js.Build (dict "minify" true) }}
+    {{ if hugo.IsProduction }}
+      {{ $js = $js | fingerprint }}
+      <script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" crossorigin="anonymous" defer></script>
+    {{ else }}
+      <script src="{{ $js.RelPermalink }}?v={{ md5 $js.Content }}" defer></script>
+    {{ end }}
+  {{ else }}
+    {{ warnf "JS file not found: %s" $path }}
+  {{ end }}
+{{ end }}

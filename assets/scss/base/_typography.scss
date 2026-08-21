@@ -1,0 +1,59 @@
+@import 'variables';
+
+body {
+  font-size: 15px;
+  line-height: 1.5;
+
+  @include respond-up($breakpoint-md) {
+    font-size: 16px;
+  }
+}
+
+strong {
+  font-weight: 700;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.2;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: opacity $transition-base, transform $transition-base;
+
+  @include respond-up($breakpoint-lg) {
+    padding: 8px 14px;
+    font-size: 12px;
+  }
+
+  @include respond-up($breakpoint-xl) {
+    padding: 8px 18px;
+    font-size: 13px;
+  }
+
+  &:hover {
+    opacity: 0.92;
+  }
+
+  &:active {
+    transform: translateY(1px);
+  }
+}
+
+.btn--primary {
+  background-color: $color-primary;
+  color: $color-white;
+}
+
+.btn--light {
+  background-color: $color-white;
+  color: $color-accent-dark;
+  font-weight: 600;
+}

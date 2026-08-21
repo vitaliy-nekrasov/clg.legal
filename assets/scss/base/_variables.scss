@@ -1,0 +1,45 @@
+$color-white: #ffffff;
+$color-black: #000000;
+$color-primary: #16322c;
+$color-accent-dark: #0c321e;
+$color-muted: rgba(255, 255, 255, 0.6);
+
+$font-family-base: 'Inter', Arial, sans-serif;
+
+// Mobile-first breakpoints
+// Mobile:  0 – 766px   (default)
+// Tablet:  767px+
+// Desktop: 1024px+
+// Wide:    1440px+
+$breakpoint-md: 767px;
+$breakpoint-lg: 1024px;
+$breakpoint-xl: 1440px;
+
+$container-max-width: 1300px;
+
+$transition-base: 0.25s ease;
+
+@mixin respond-up($breakpoint) {
+  @media (min-width: $breakpoint) {
+    @content;
+  }
+}
+
+@mixin container {
+  width: 100%;
+  max-width: $container-max-width;
+  margin-inline: auto;
+  padding-inline: 20px;
+
+  @include respond-up($breakpoint-md) {
+    padding-inline: 24px;
+  }
+
+  @include respond-up($breakpoint-lg) {
+    padding-inline: 32px;
+  }
+
+  @include respond-up($breakpoint-xl) {
+    padding-inline: 40px;
+  }
+}

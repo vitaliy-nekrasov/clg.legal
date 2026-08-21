@@ -1,0 +1,70 @@
+<header class="site-header" data-header>
+  <div class="site-header__bar">
+    <a class="site-header__logo" href="{{ "/" | relLangURL }}" aria-label="{{ .Site.Title }} — на головну">
+      <img src="/images/logo.png" width="212" height="132" alt="{{ .Site.Title }}" decoding="async">
+    </a>
+
+    <button
+      class="site-header__toggle"
+      type="button"
+      aria-label="Відкрити меню"
+      aria-expanded="false"
+      aria-controls="site-nav"
+      data-header-toggle
+    >
+      <span class="site-header__toggle-line" aria-hidden="true"></span>
+      <span class="site-header__toggle-line" aria-hidden="true"></span>
+      <span class="site-header__toggle-line" aria-hidden="true"></span>
+    </button>
+  </div>
+
+  <div class="site-header__overlay" data-header-overlay hidden aria-hidden="true"></div>
+
+  <aside
+    class="site-header__drawer"
+    id="site-nav"
+    data-header-panel
+    aria-label="Меню навігації"
+    hidden
+  >
+    <div class="site-header__drawer-head">
+      <button class="site-header__close" type="button" aria-label="Закрити меню" data-header-close>
+        <svg width="12" height="12" viewBox="0 0 15 15" aria-hidden="true">
+          <path d="M1 15a1 1 0 01-.71-.29 1 1 0 010-1.41l5.8-5.8-5.8-5.8A1 1 0 011.7.29l5.8 5.8 5.8-5.8a1 1 0 011.41 1.41l-5.8 5.8 5.8 5.8a1 1 0 01-1.41 1.41l-5.8-5.8-5.8 5.8A1 1 0 011 15z" fill="currentColor"/>
+        </svg>
+      </button>
+    </div>
+
+    <div class="site-header__drawer-body">
+      <div class="site-header__meta">
+        <img src="/images/logo.png" class="logo-menu" width="180" height="120" alt="{{ .Site.Title }}" decoding="async">
+
+        <a class="site-header__address" href="{{ .Site.Params.addressUrl }}" target="_blank" rel="noopener noreferrer">
+          {{ .Site.Params.address }}
+        </a>
+
+        <div class="site-header__phones" aria-label="Телефони">
+          <a class="site-header__phone" href="tel:{{ .Site.Params.phonePrimary }}">{{ .Site.Params.phonePrimaryDisplay }}</a>
+          <a class="site-header__phone site-header__phone--secondary" href="tel:{{ .Site.Params.phoneSecondary }}">{{ .Site.Params.phoneSecondaryDisplay }}</a>
+        </div>
+
+        <a class="site-header__cta btn btn--primary" href="{{ "/" | relLangURL }}#consultation">Записатись на консультацію</a>
+      </div>
+
+      <hr class="site-header__divider">
+
+      <nav class="site-header__nav" aria-label="Головна навігація">
+        <ul class="site-header__nav-list">
+          {{ range .Site.Menus.main }}
+            <li class="site-header__nav-item">
+              <a
+                class="site-header__nav-link{{ if $.IsMenuCurrent "main" . }} is-active{{ end }}"
+                href="{{ .URL }}"
+              >{{ .Name }}</a>
+            </li>
+          {{ end }}
+        </ul>
+      </nav>
+    </div>
+  </aside>
+</header>
