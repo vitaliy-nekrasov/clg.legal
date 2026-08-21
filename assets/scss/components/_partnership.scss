@@ -1,0 +1,140 @@
+@import "../base/variables";
+
+$partnership-text-muted: rgba(255, 255, 255, 0.68);
+$partnership-card-bg: rgba(255, 255, 255, 0.841);
+$partnership-card-text: #0b0b0b;
+
+.partnership {
+  background-color: $color-black-lite;
+  color: $color-white;
+  padding-top: 1px;
+  padding-bottom: 10px;
+
+  @include respond-up($breakpoint-lg) {
+    padding-top: 40px;
+    padding-bottom: 80px;
+  }
+}
+
+.partnership__container {
+  @include container;
+}
+
+.partnership__grid {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  @include respond-up($breakpoint-lg) {
+    flex-direction: row;
+    align-items: stretch;
+    gap: 50px;
+  }
+}
+
+.partnership__content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  flex: 1 1 auto;
+  min-width: 0;
+
+  @include respond-up($breakpoint-lg) {
+    flex: 0 1 64%;
+  }
+}
+
+.partnership__label {
+  display: flex;
+  align-items: center;
+}
+
+.partnership__label-icon {
+  width: 23px;
+}
+
+.partnership__title {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 25px;
+  color: $color-white;
+
+  @include respond-up($breakpoint-lg) {
+    font-size: 30px;
+    line-height: 36px;
+  }
+}
+
+.partnership__title-line {
+  display: block;
+}
+
+.partnership__description {
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.5;
+  color: $partnership-text-muted;
+
+  @include respond-up($breakpoint-lg) {
+    margin-top: 20px;
+    font-size: 18px;
+    line-height: 27px;
+  }
+}
+
+.partnership__media {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  flex: 1 1 auto;
+  min-width: 0;
+  min-height: 280px;
+  padding: 15px;
+  background-color: $color-primary;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  @include respond-up($breakpoint-md) {
+    min-height: 360px;
+  }
+
+  @include respond-up($breakpoint-lg) {
+    flex: 0 1 36%;
+    min-height: 420px;
+  }
+}
+
+.partnership__card {
+  position: relative;
+  width: 95%;
+  max-width: 100%;
+  margin-top: auto;
+  padding: 15px;
+  background: $partnership-card-bg;
+}
+
+.partnership__card-icon {
+  display: block;
+  width: 23px;
+  margin-left: auto;
+  margin-bottom: -40px;
+}
+
+.partnership__card-text {
+  margin: 0;
+  padding-top: 20px;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.5;
+  color: $partnership-card-text;
+
+  @include respond-up($breakpoint-lg) {
+    font-size: 18px;
+    line-height: 27px;
+  }
+}
