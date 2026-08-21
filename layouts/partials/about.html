@@ -1,0 +1,43 @@
+{{ $about := .Params.about }}
+<section class="about" id="about-us" data-about aria-labelledby="about-title">
+  <div class="about__container">
+    <div class="about__grid">
+      <div class="about__intro">
+        <div class="about__label">
+          <img
+            class="about__label-icon"
+            src="/images/badge-icon.png"
+            width="29"
+            height="25"
+            alt=""
+            decoding="async"
+          />
+          <p class="about__label-text">{{ $about.label }}</p>
+        </div>
+
+        <h2 class="about__title" id="about-title">{{ $about.title }}</h2>
+        <p class="about__subtitle">{{ $about.subtitle }}</p>
+      </div>
+
+      <div class="about__body">
+        {{ range $about.paragraphs }}
+          <p class="about__text">{{ . }}</p>
+        {{ end }}
+      </div>
+    </div>
+
+    <dl class="about__stats">
+      {{ range $about.stats }}
+        <div class="about__stat">
+          <dt class="about__stat-label">{{ .label }}</dt>
+          <dd class="about__stat-value">
+            <span
+              class="about__stat-number"
+              data-counter-value="{{ .value }}"
+            >0</span>{{ with .suffix }}<span class="about__stat-suffix">{{ . }}</span>{{ end }}
+          </dd>
+        </div>
+      {{ end }}
+    </dl>
+  </div>
+</section>

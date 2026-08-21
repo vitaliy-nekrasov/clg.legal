@@ -1,10 +1,11 @@
 $color-white: #ffffff;
 $color-black: #000000;
+$color-black-lite: rgb(11, 11, 11);
 $color-primary: #16322c;
 $color-accent-dark: #0c321e;
 $color-muted: rgba(255, 255, 255, 0.6);
 
-$font-family-base: 'Inter', Arial, sans-serif;
+$font-family-base: "Inter", Arial, sans-serif;
 
 // Mobile-first breakpoints
 // Mobile:  0 – 766px   (default)
@@ -15,7 +16,7 @@ $breakpoint-md: 767px;
 $breakpoint-lg: 1024px;
 $breakpoint-xl: 1440px;
 
-$container-max-width: 1300px;
+$container-max-width: 1390px;
 
 $transition-base: 0.25s ease;
 
