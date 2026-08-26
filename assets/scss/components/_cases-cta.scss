@@ -14,24 +14,20 @@ $color-cases-social-bg: rgba(255, 255, 255, 0.28);
   padding-top: 10px;
   padding-bottom: 1px;
 
-  &::before {
-    content: "";
-    position: absolute;
-    top: 120px;
-    right: -40px;
-    width: 420px;
-    height: 420px;
-    background-image: url("/images/cases-shield.png");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
-    opacity: 0.08;
-    pointer-events: none;
-  }
-
   @include respond-up($breakpoint-lg) {
     padding-top: 80px;
-    padding-bottom: 285px;
+    padding-bottom: 10px;
+
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: url("/images/cases-watermark.png");
+      background-repeat: no-repeat;
+      background-position: top right;
+      opacity: 0.5;
+      pointer-events: none;
+    }
   }
 
   @include respond-up($breakpoint-xl) {
@@ -567,10 +563,12 @@ $color-cases-social-bg: rgba(255, 255, 255, 0.28);
     width: 210px;
     max-width: 210px;
     margin: 0;
+    display: none;
   }
 
   @include respond-up($breakpoint-xl) {
     width: 165px;
+    display: block;
   }
 
   @include respond-up(1630px) {

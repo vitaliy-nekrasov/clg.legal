@@ -1,0 +1,33 @@
+{{ $block := .Params.clientCare }}
+<section class="client-care" aria-labelledby="client-care-title">
+  <div class="client-care__container">
+    <div
+      class="client-care__sheet"
+      style="--client-care-watermark: url('{{ $block.watermarkImage | relURL }}')"
+    >
+      <div class="client-care__body">
+        <h2 class="client-care__title" id="client-care-title">
+          {{ $block.title }}
+        </h2>
+
+        <div class="client-care__features">
+          {{ range $block.features }}
+          <article class="client-care__feature">
+            <h3 class="client-care__feature-title">{{ .title }}</h3>
+            <p class="client-care__feature-text">{{ .text }}</p>
+          </article>
+          {{ end }}
+        </div>
+
+        <ul class="client-care__promises">
+          {{ range $block.promises }}
+          <li class="client-care__promise">
+            <span class="client-care__promise-number">{{ .number }}</span>
+            <span class="client-care__promise-text">{{ .text }}</span>
+          </li>
+          {{ end }}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
