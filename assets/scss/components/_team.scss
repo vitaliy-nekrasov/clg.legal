@@ -45,7 +45,7 @@ $breakpoint-team-wide: 1600px;
 
 .team__header-decor {
   position: absolute;
-  top: -10px;
+  top: -20px;
   left: 50%;
   z-index: 1;
   width: 90%;
@@ -54,6 +54,10 @@ $breakpoint-team-wide: 1600px;
   background: url("/images/team/team-watermark.png") center / contain no-repeat;
   transform: translate(-50%, -35%);
   pointer-events: none;
+
+  @include respond-up(525px) {
+    top: -10px;
+  }
 }
 
 .team__container {
@@ -76,12 +80,17 @@ $breakpoint-team-wide: 1600px;
 
 .team__title {
   margin: 0;
-  font-size: 22px;
+  font-size: 19px;
   font-weight: 700;
   line-height: 1.25;
   color: $color-white;
   position: relative;
-  top: -30px;
+  top: -20px;
+
+  @include respond-up(525px) {
+    font-size: 22px;
+    top: -30px;
+  }
 
   @include respond-up($breakpoint-md) {
     position: relative;

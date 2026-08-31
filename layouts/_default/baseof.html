@@ -15,7 +15,9 @@
     {{ block "main" . }}{{ end }}
   </main>
 
-  {{ block "footer" . }}{{ end }}
+  {{ block "footer" . }}
+    {{ partial "site-footer.html" . }}
+  {{ end }}
 
   {{ partial "scripts.html" . }}
   {{ block "scripts-extra" . }}{{ end }}

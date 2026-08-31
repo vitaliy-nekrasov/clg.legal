@@ -10,6 +10,7 @@ title = 'Concordis Legal Group'
   phoneSecondary = '+380442225511'
   phoneSecondaryDisplay = '+38 (044) 222-55-11'
   address = '01010, м.Київ, вул. І.Мазепи, б. 11а, офіс 21, 3 поверх'
+  addressLines = ['01010, м.Київ,', 'вул. І.Мазепи, б. 11а,', 'офіс 21, 3 поверх']
   addressUrl = 'https://www.google.com/maps/dir/?api=1&destination=Київ,+Івана+Мазепи+11а'
   email = 'office@clg.legal'
 

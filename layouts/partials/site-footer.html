@@ -1,0 +1,51 @@
+<footer class="site-footer" id="footer">
+  <div class="site-footer__container">
+    <div class="site-footer__grid">
+      <div class="site-footer__brand">
+        <a class="site-footer__logo-link" href="{{ "/" | relLangURL }}" aria-label="{{ .Site.Title }} — на головну">
+          <img
+            class="site-footer__logo"
+            src="/images/footer-logo.png"
+            width="218"
+            height="132"
+            alt="{{ .Site.Title }}"
+            loading="lazy"
+            decoding="async"
+          />
+        </a>
+      </div>
+
+      <nav class="site-footer__nav" aria-label="Навігація в підвалі">
+        <ul class="site-footer__nav-list">
+          {{ range .Site.Menus.main }}
+            <li class="site-footer__nav-item">
+              <a class="site-footer__nav-link" href="{{ .URL | relLangURL }}">{{ .Name }}</a>
+            </li>
+          {{ end }}
+        </ul>
+      </nav>
+
+      <div class="site-footer__contacts">
+        <a
+          class="site-footer__address"
+          href="{{ .Site.Params.addressUrl }}"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {{ range .Site.Params.addressLines }}
+            <span class="site-footer__address-line">{{ . }}</span>
+          {{ end }}
+        </a>
+
+        <p class="site-footer__phones">
+          <a href="tel:{{ .Site.Params.phonePrimary }}">{{ .Site.Params.phonePrimaryDisplay }}</a><br />
+          <a href="tel:{{ .Site.Params.phoneSecondary }}">{{ .Site.Params.phoneSecondaryDisplay }}</a>
+        </p>
+
+        <p class="site-footer__email">
+          <a href="mailto:{{ .Site.Params.email }}">{{ .Site.Params.email }}</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
