@@ -1,0 +1,23 @@
+<article class="team-card">
+  <img
+    class="team-card__photo"
+    src="{{ .photo }}"
+    width="274"
+    height="340"
+    alt="{{ .name }}"
+    loading="lazy"
+    decoding="async"
+  />
+
+  <h3 class="team-card__name">{{ .name }}</h3>
+  <p class="team-card__role">{{ .role }}</p>
+
+  <div class="team-card__stats">
+    <span class="team-card__stat">{{ .winRate }}</span>
+    <span class="team-card__stat">{{ .experience }}</span>
+  </div>
+
+  <a class="team-card__button btn btn--primary" href="{{ .buttonUrl | relLangURL }}">
+    {{ .buttonText }}
+  </a>
+</article>
