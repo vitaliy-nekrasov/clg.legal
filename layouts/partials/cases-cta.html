@@ -1,5 +1,9 @@
 {{ $block := .Params.casesCta }}
-<section class="cases-cta" aria-labelledby="cases-cta-form-title">
+<section
+  class="cases-cta"
+  aria-labelledby="cases-cta-form-title"
+  style="--cases-cta-watermark: url('{{ partial "static-url.html" $block.watermarkImage }}')"
+>
   <div class="cases-cta__container">
     <div class="cases-cta__carousel" data-cases-carousel>
       <div class="cases-cta__carousel-body">
@@ -86,7 +90,7 @@
               aria-label="WhatsApp"
             >
               <img
-                src="{{ $block.form.social.whatsappIcon }}"
+                src="{{ $block.form.social.whatsappIcon | relURL }}"
                 width="62"
                 height="62"
                 alt=""
@@ -101,7 +105,7 @@
               aria-label="Telegram"
             >
               <img
-                src="{{ $block.form.social.telegramIcon }}"
+                src="{{ $block.form.social.telegramIcon | relURL }}"
                 width="62"
                 height="62"
                 alt=""
@@ -185,7 +189,7 @@
   </div>
   <img
     class="cases-cta__statue"
-    src="{{ $block.statueImage }}"
+    src="{{ $block.statueImage | relURL }}"
     width="210"
     height="278"
     alt=""

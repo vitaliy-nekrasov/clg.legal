@@ -1,7 +1,7 @@
 <header class="site-header" data-header>
   <div class="site-header__bar">
     <a class="site-header__logo" href="{{ "/" | relLangURL }}" aria-label="{{ .Site.Title }} — на головну">
-      <img src="/images/logo.png" width="212" height="132" alt="{{ .Site.Title }}" decoding="async">
+      <img src="{{ "/images/logo.png" | relURL }}" width="212" height="132" alt="{{ .Site.Title }}" decoding="async">
     </a>
 
     <button
@@ -37,7 +37,7 @@
 
     <div class="site-header__drawer-body">
       <div class="site-header__meta">
-        <img src="/images/logo.png" class="logo-menu" width="180" height="120" alt="{{ .Site.Title }}" decoding="async">
+        <img src="{{ "/images/logo.png" | relURL }}" class="logo-menu" width="180" height="120" alt="{{ .Site.Title }}" decoding="async">
 
         <a class="site-header__address" href="{{ .Site.Params.addressUrl }}" target="_blank" rel="noopener noreferrer">
           {{ .Site.Params.address }}
@@ -59,7 +59,7 @@
             <li class="site-header__nav-item">
               <a
                 class="site-header__nav-link{{ if $.IsMenuCurrent "main" . }} is-active{{ end }}"
-                href="{{ .URL }}"
+                href="{{ .URL | relLangURL }}"
               >{{ .Name }}</a>
             </li>
           {{ end }}

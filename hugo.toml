@@ -1,4 +1,5 @@
 baseURL = 'https://clg.legal/'
+canonifyURLs = true
 languageCode = 'uk-UA'
 defaultContentLanguage = 'uk'
 title = 'Concordis Legal Group'

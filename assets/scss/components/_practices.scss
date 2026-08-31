@@ -175,7 +175,7 @@ $color-service-link-hover: #3a7f70;
   width: 50%;
   max-width: 206px;
   height: 195px;
-  background-image: url(/images/hero-person.png);
+  background-image: url("#{$imagesBase}/hero-person.png");
   background-repeat: no-repeat;
   background-position: top right;
   background-size: contain;

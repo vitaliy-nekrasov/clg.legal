@@ -1,0 +1,2 @@
+{{- $path := . | strings.TrimPrefix "/" -}}
+{{- printf "%s%s" site.BaseURL $path -}}

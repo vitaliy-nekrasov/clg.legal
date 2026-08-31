@@ -34,7 +34,7 @@ $breakpoint-team-wide: 1600px;
     content: "";
     position: absolute;
     inset: 0;
-    background-image: url("/images/team/team-watermark.png");
+    background-image: url("#{$imagesBase}/team/team-watermark.png");
     background-repeat: no-repeat;
     background-position: center top 20px;
     background-size: 280px auto;
@@ -51,7 +51,7 @@ $breakpoint-team-wide: 1600px;
   width: 90%;
   max-width: 615px;
   height: 100px;
-  background: url("/images/team/team-watermark.png") center / contain no-repeat;
+  background: url("#{$imagesBase}/team/team-watermark.png") center / contain no-repeat;
   transform: translate(-50%, -35%);
   pointer-events: none;
 

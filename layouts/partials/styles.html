@@ -1,6 +1,11 @@
+{{ $basePath := strings.TrimSuffix "/" (urls.Parse site.BaseURL).Path }}
+{{ $imagesBase := cond (eq $basePath "") "/images" (printf "%s/images" $basePath) }}
+
 {{ with resources.Get "scss/site.scss" }}
+  {{ $scssContent := printf "$imagesBase: %q;\n%s" $imagesBase .Content }}
+  {{ $scss := resources.FromString "scss/site.built.scss" $scssContent }}
   {{ $sassOpts := dict "includePaths" (slice "assets/scss") "targetPath" "css/site.css" "outputStyle" "compressed" }}
-  {{ $css := . | css.Sass $sassOpts | minify }}
+  {{ $css := $scss | css.Sass $sassOpts | minify }}
   {{ if hugo.IsProduction }}
     {{ $css = $css | fingerprint }}
     <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}" crossorigin="anonymous">
@@ -15,8 +20,10 @@
 {{ range $style := $styles }}
   {{ $path := printf "scss/%s.scss" $style }}
   {{ with resources.Get $path }}
+    {{ $scssContent := printf "$imagesBase: %q;\n%s" $imagesBase .Content }}
+    {{ $scss := resources.FromString (printf "scss/%s.built.scss" $style) $scssContent }}
     {{ $sassOpts := dict "includePaths" (slice "assets/scss") "targetPath" (printf "css/%s.css" $style) "outputStyle" "compressed" }}
-    {{ $css := . | css.Sass $sassOpts | minify }}
+    {{ $css := $scss | css.Sass $sassOpts | minify }}
     {{ if hugo.IsProduction }}
       {{ $css = $css | fingerprint }}
       <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}" crossorigin="anonymous">

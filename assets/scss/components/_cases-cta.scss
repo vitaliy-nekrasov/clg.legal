@@ -22,7 +22,7 @@ $color-cases-social-bg: rgba(255, 255, 255, 0.28);
       content: "";
       position: absolute;
       inset: 0;
-      background-image: url("/images/cases-watermark.png");
+      background-image: var(--cases-cta-watermark);
       background-repeat: no-repeat;
       background-position: top right;
       opacity: 0.5;

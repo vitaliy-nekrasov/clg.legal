@@ -97,6 +97,7 @@ partnership:
     text: "Адвокатське обʼєднання «Конкордіс<br>Ліґал Груп» (BA Concordis Legal Group) — ваш надійний юридичний партнер у всіх питаннях, пов’язаних із захистом прав, договірними відносинами, судовими процесами та правовим супроводом діяльності."
 
 casesCta:
+  watermarkImage: "/images/cases-watermark.png"
   promo:
     label: "- Кейси"
     titleLines:

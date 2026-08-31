@@ -3,7 +3,7 @@
   <div class="client-care__container">
     <div
       class="client-care__sheet"
-      style="--client-care-watermark: url('{{ $block.watermarkImage | relURL }}')"
+      style="--client-care-watermark: url('{{ partial "static-url.html" $block.watermarkImage }}')"
     >
       <div class="client-care__body">
         <h2 class="client-care__title" id="client-care-title">

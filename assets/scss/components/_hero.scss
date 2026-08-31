@@ -71,7 +71,7 @@
 
 .hero__background-pattern {
   height: 100%;
-  background-image: url("/images/hero-bg-desktop.png");
+  background-image: url("#{$imagesBase}/hero-bg-desktop.png");
   background-position: center right;
   background-repeat: no-repeat;
 }

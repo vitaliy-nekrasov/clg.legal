@@ -6,7 +6,7 @@
         <div class="partnership__label">
           <img
             class="partnership__label-icon"
-            src="{{ $partnership.labelIcon }}"
+            src="{{ $partnership.labelIcon | relURL }}"
             width="29"
             height="25"
             alt=""
@@ -25,12 +25,12 @@
 
       <aside
         class="partnership__media"
-        style="background-image: url('{{ $partnership.card.background | relURL }}')"
+        style="background-image: url('{{ partial "static-url.html" $partnership.card.background }}')"
       >
         <div class="partnership__card">
           <img
             class="partnership__card-icon"
-            src="{{ $partnership.card.icon }}"
+            src="{{ $partnership.card.icon | relURL }}"
             width="28"
             height="25"
             alt=""

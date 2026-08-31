@@ -2,7 +2,8 @@
 {{ $title := $seo.title | default .Title }}
 {{ $description := $seo.description | default .Description | default .Site.Params.description }}
 {{ $canonical := $seo.canonical | default .Permalink }}
-{{ $ogImage := $seo.ogImage | default "/images/hero-person.png" | absURL }}
+{{ $ogImagePath := $seo.ogImage | default "/images/hero-person.png" | strings.TrimPrefix "/" }}
+{{ $ogImage := printf "%s%s" .Site.BaseURL $ogImagePath }}
 {{ $robots := $seo.robots | default "index, follow" }}
 
 <meta charset="utf-8">
@@ -29,7 +30,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-<link rel="icon" href="/images/favicon-32.png" sizes="32x32">
-<link rel="icon" href="/images/favicon-192.png" sizes="192x192">
+<link rel="icon" href="{{ "/images/favicon-32.png" | relURL }}" sizes="32x32">
+<link rel="icon" href="{{ "/images/favicon-192.png" | relURL }}" sizes="192x192">
 
 {{ partial "styles.html" . }}

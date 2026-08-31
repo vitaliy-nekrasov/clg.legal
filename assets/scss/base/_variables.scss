@@ -5,6 +5,9 @@ $color-primary: #16322c;
 $color-accent-dark: #0c321e;
 $color-muted: rgba(255, 255, 255, 0.6);
 
+// Overridden at build time via Hugo Pipes (see layouts/partials/styles.html)
+$imagesBase: "/images" !default;
+
 $font-family-base: "Inter", Arial, sans-serif;
 
 // Mobile-first breakpoints
