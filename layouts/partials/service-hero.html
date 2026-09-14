@@ -1,0 +1,16 @@
+{{ $hero := .Params.serviceHero }}
+<section class="service-hero" aria-labelledby="service-hero-title">
+  <div class="service-hero__container">
+    <nav class="service-hero__breadcrumb" aria-label="Breadcrumb">
+      <a class="service-hero__breadcrumb-link" href="{{ "/" | relLangURL }}">Головна</a>
+      <span class="service-hero__breadcrumb-separator" aria-hidden="true">/</span>
+      <span class="service-hero__breadcrumb-current">{{ $hero.breadcrumbCurrent | default .Title }}</span>
+    </nav>
+
+    <h1 class="service-hero__title" id="service-hero-title">{{ $hero.title | default .Title }}</h1>
+
+    {{ with $hero.lead }}
+      <p class="service-hero__lead">{{ . }}</p>
+    {{ end }}
+  </div>
+</section>

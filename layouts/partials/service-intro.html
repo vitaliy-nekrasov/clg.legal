@@ -1,0 +1,69 @@
+{{ $intro := .Params.serviceIntro }}
+<section class="service-intro" aria-labelledby="service-intro-title">
+  <div class="service-intro__media-row">
+    <div class="service-intro__container service-intro__container--media">
+      <div class="service-intro__media-grid">
+        <div class="service-intro__sidebar" aria-hidden="true"></div>
+
+        <div class="service-intro__card-column">
+          <img
+            class="service-intro__photo"
+            src="{{ $intro.image | relURL }}"
+            width="1024"
+            height="683"
+            alt=""
+            decoding="async"
+            fetchpriority="high"
+          />
+
+          <div class="service-intro__contact-card">
+            <div class="service-intro__contact-label">
+              <img
+                class="service-intro__contact-icon"
+                src="{{ $intro.contactIcon | relURL }}"
+                width="29"
+                height="25"
+                alt=""
+                decoding="async"
+              />
+              <p class="service-intro__contact-badge">{{ $intro.contactBadge }}</p>
+            </div>
+
+            <h2 class="service-intro__contact-title" id="service-intro-title">
+              {{ $intro.contactTitle }}
+            </h2>
+
+            <p class="service-intro__contact-text">{{ $intro.contactText }}</p>
+
+            <a
+              class="service-intro__contact-button btn btn--primary"
+              href="{{ $intro.contactButtonUrl | relLangURL }}"
+            >
+              {{ $intro.contactButtonText }}
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="service-intro__container service-intro__container--content">
+    <div class="service-intro__content">
+      {{ range $intro.paragraphs }}
+        <p class="service-intro__paragraph">{{ . | safeHTML }}</p>
+      {{ end }}
+
+      {{ with $intro.listItems }}
+        <ul class="service-intro__list">
+          {{ range . }}
+            <li class="service-intro__list-item">{{ . | safeHTML }}</li>
+          {{ end }}
+        </ul>
+      {{ end }}
+
+      {{ range $intro.closingParagraphs }}
+        <p class="service-intro__paragraph">{{ . | safeHTML }}</p>
+      {{ end }}
+    </div>
+  </div>
+</section>

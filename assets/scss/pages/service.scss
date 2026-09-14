@@ -1,0 +1,25 @@
+@import "components/service-hero";
+@import "components/service-intro";
+@import "components/cases-cta";
+@import "components/team";
+@import "components/faq";
+
+.page-abonent-ur-obs {
+  .team {
+    padding-top: 40px;
+
+    @include respond-up($breakpoint-md) {
+      padding-top: 100px;
+    }
+  }
+
+  .faq {
+    padding-top: 40px;
+    padding-bottom: 40px;
+
+    @include respond-up($breakpoint-lg) {
+      padding-top: 100px;
+      padding-bottom: 100px;
+    }
+  }
+}
