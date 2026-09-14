@@ -8,7 +8,8 @@
 .page-gosp-pravo-gosp-spory,
 .page-civil-pravo-civil-spory,
 .page-corp-pravo-ma,
-.page-crime-pravo {
+.page-crime-pravo,
+.page-trudove-pravo-spory {
   .team {
     padding-top: 40px;
 
@@ -31,7 +32,8 @@
 .page-gosp-pravo-gosp-spory,
 .page-civil-pravo-civil-spory,
 .page-corp-pravo-ma,
-.page-crime-pravo {
+.page-crime-pravo,
+.page-trudove-pravo-spory {
   .service-intro__media-row {
     @include respond-up($breakpoint-lg) {
       padding-top: 0;
