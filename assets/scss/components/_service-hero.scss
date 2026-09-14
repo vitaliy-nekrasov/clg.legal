@@ -19,10 +19,20 @@
     inset: 0;
     z-index: 0;
     background-color: $color-primary;
-    background-image: url("#{$imagesBase}/service-page-hero-bg.png");
+    background-image: var(
+      --service-hero-bg-mobile,
+      var(--service-hero-bg, url("#{$imagesBase}/service-page-hero-bg.png"))
+    );
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
+
+    @include respond-up($breakpoint-md) {
+      background-image: var(
+        --service-hero-bg,
+        url("#{$imagesBase}/service-page-hero-bg.png")
+      );
+    }
   }
 }
 

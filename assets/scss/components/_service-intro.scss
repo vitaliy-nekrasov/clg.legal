@@ -18,6 +18,15 @@ $color-service-contact-bg: #455b56;
 .service-intro__container {
   @include container;
 
+  &--preface {
+    padding-top: 20px;
+    margin-bottom: 0;
+
+    @include respond-up($breakpoint-lg) {
+      padding-bottom: 24px;
+    }
+  }
+
   &--media {
     margin-bottom: 24px;
   }
@@ -28,6 +37,20 @@ $color-service-contact-bg: #455b56;
     @include respond-up($breakpoint-lg) {
       padding-bottom: 80px;
     }
+  }
+}
+
+.service-intro__preface {
+  font-size: 14px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.96);
+
+  @include respond-up($breakpoint-md) {
+    font-size: 16px;
+  }
+
+  .service-intro__paragraph {
+    margin: 0;
   }
 }
 
@@ -51,10 +74,36 @@ $color-service-contact-bg: #455b56;
     flex: 0 0 65%;
     min-height: 514px;
     border-radius: 0;
-    background-image: url("#{$imagesBase}/service-abonent-sidebar.jpg");
+    background-image: var(--service-intro-sidebar-bg);
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
+  }
+}
+
+.service-intro__aside {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  font-size: 14px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.96);
+
+  @include respond-up($breakpoint-md) {
+    font-size: 16px;
+  }
+
+  @include respond-up($breakpoint-lg) {
+    flex: 0 0 65%;
+    min-height: 514px;
+  }
+
+  .service-intro__paragraph {
+    margin: 20px 0 0;
+
+    &:first-child {
+      margin-top: 0;
+    }
   }
 }
 

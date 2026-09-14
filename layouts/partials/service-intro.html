@@ -1,9 +1,36 @@
 {{ $intro := .Params.serviceIntro }}
+{{ $hasSidebar := $intro.sidebarImage }}
+{{ $hasAside := and (not $hasSidebar) $intro.asideParagraphs }}
+{{ $hasContent := or $intro.paragraphs $intro.listItems $intro.closingParagraphs }}
 <section class="service-intro" aria-labelledby="service-intro-title">
+  {{ with $intro.prefaceParagraphs }}
+    <div class="service-intro__container service-intro__container--preface">
+      <div class="service-intro__preface">
+        {{ range . }}
+          <p class="service-intro__paragraph">{{ . | safeHTML }}</p>
+        {{ end }}
+      </div>
+    </div>
+  {{ end }}
+
   <div class="service-intro__media-row">
     <div class="service-intro__container service-intro__container--media">
-      <div class="service-intro__media-grid">
-        <div class="service-intro__sidebar" aria-hidden="true"></div>
+      <div
+        class="service-intro__media-grid{{ if $hasSidebar }} service-intro__media-grid--sidebar{{ else if $hasAside }} service-intro__media-grid--aside{{ end }}"
+      >
+        {{ if $hasSidebar }}
+          <div
+            class="service-intro__sidebar"
+            style="--service-intro-sidebar-bg: url('{{ partial "static-url.html" $intro.sidebarImage }}');"
+            aria-hidden="true"
+          ></div>
+        {{ else if $hasAside }}
+          <div class="service-intro__aside">
+            {{ range $intro.asideParagraphs }}
+              <p class="service-intro__paragraph">{{ . | safeHTML }}</p>
+            {{ end }}
+          </div>
+        {{ end }}
 
         <div class="service-intro__card-column">
           <img
@@ -47,23 +74,25 @@
     </div>
   </div>
 
-  <div class="service-intro__container service-intro__container--content">
-    <div class="service-intro__content">
-      {{ range $intro.paragraphs }}
-        <p class="service-intro__paragraph">{{ . | safeHTML }}</p>
-      {{ end }}
+  {{ if $hasContent }}
+    <div class="service-intro__container service-intro__container--content">
+      <div class="service-intro__content">
+        {{ range $intro.paragraphs }}
+          <p class="service-intro__paragraph">{{ . | safeHTML }}</p>
+        {{ end }}
 
-      {{ with $intro.listItems }}
-        <ul class="service-intro__list">
-          {{ range . }}
-            <li class="service-intro__list-item">{{ . | safeHTML }}</li>
-          {{ end }}
-        </ul>
-      {{ end }}
+        {{ with $intro.listItems }}
+          <ul class="service-intro__list">
+            {{ range . }}
+              <li class="service-intro__list-item">{{ . | safeHTML }}</li>
+            {{ end }}
+          </ul>
+        {{ end }}
 
-      {{ range $intro.closingParagraphs }}
-        <p class="service-intro__paragraph">{{ . | safeHTML }}</p>
-      {{ end }}
+        {{ range $intro.closingParagraphs }}
+          <p class="service-intro__paragraph">{{ . | safeHTML }}</p>
+        {{ end }}
+      </div>
     </div>
-  </div>
+  {{ end }}
 </section>

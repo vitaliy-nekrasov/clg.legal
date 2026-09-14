@@ -4,7 +4,8 @@
 @import "components/team";
 @import "components/faq";
 
-.page-abonent-ur-obs {
+.page-abonent-ur-obs,
+.page-gosp-pravo-gosp-spory {
   .team {
     padding-top: 40px;
 
@@ -20,6 +21,14 @@
     @include respond-up($breakpoint-lg) {
       padding-top: 100px;
       padding-bottom: 100px;
+    }
+  }
+}
+
+.page-gosp-pravo-gosp-spory {
+  .service-intro__media-row {
+    @include respond-up($breakpoint-lg) {
+      padding-top: 0;
     }
   }
 }

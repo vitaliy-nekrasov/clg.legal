@@ -1,5 +1,11 @@
 {{ $hero := .Params.serviceHero }}
-<section class="service-hero" aria-labelledby="service-hero-title">
+{{ $bg := $hero.backgroundImage | default "/images/service-page-hero-bg.png" }}
+{{ $bgMobile := $hero.backgroundImageMobile | default $bg }}
+<section
+  class="service-hero"
+  aria-labelledby="service-hero-title"
+  style="--service-hero-bg: url('{{ partial "static-url.html" $bg }}'); --service-hero-bg-mobile: url('{{ partial "static-url.html" $bgMobile }}');"
+>
   <div class="service-hero__container">
     <nav class="service-hero__breadcrumb" aria-label="Breadcrumb">
       <a class="service-hero__breadcrumb-link" href="{{ "/" | relLangURL }}">Головна</a>
