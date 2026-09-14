@@ -5,7 +5,8 @@
 @import "components/faq";
 
 .page-abonent-ur-obs,
-.page-gosp-pravo-gosp-spory {
+.page-gosp-pravo-gosp-spory,
+.page-civil-pravo-civil-spory {
   .team {
     padding-top: 40px;
 
@@ -25,7 +26,8 @@
   }
 }
 
-.page-gosp-pravo-gosp-spory {
+.page-gosp-pravo-gosp-spory,
+.page-civil-pravo-civil-spory {
   .service-intro__media-row {
     @include respond-up($breakpoint-lg) {
       padding-top: 0;
