@@ -10,7 +10,8 @@
 .page-corp-pravo-ma,
 .page-crime-pravo,
 .page-trudove-pravo-spory,
-.page-predstavnytstvo-zahist-interesiv-v-sydah-vid-yorisdikciy-instanciy {
+.page-predstavnytstvo-zahist-interesiv-v-sydah-vid-yorisdikciy-instanciy,
+.page-dohovirne-pravo {
   .team {
     padding-top: 40px;
 
@@ -35,7 +36,8 @@
 .page-corp-pravo-ma,
 .page-crime-pravo,
 .page-trudove-pravo-spory,
-.page-predstavnytstvo-zahist-interesiv-v-sydah-vid-yorisdikciy-instanciy {
+.page-predstavnytstvo-zahist-interesiv-v-sydah-vid-yorisdikciy-instanciy,
+.page-dohovirne-pravo {
   .service-intro__media-row {
     @include respond-up($breakpoint-lg) {
       padding-top: 0;
