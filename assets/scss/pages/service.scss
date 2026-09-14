@@ -7,7 +7,8 @@
 .page-abonent-ur-obs,
 .page-gosp-pravo-gosp-spory,
 .page-civil-pravo-civil-spory,
-.page-corp-pravo-ma {
+.page-corp-pravo-ma,
+.page-crime-pravo {
   .team {
     padding-top: 40px;
 
@@ -29,7 +30,8 @@
 
 .page-gosp-pravo-gosp-spory,
 .page-civil-pravo-civil-spory,
-.page-corp-pravo-ma {
+.page-corp-pravo-ma,
+.page-crime-pravo {
   .service-intro__media-row {
     @include respond-up($breakpoint-lg) {
       padding-top: 0;
